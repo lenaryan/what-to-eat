@@ -4,8 +4,9 @@
 }
 
 .fixedBtn {
-    position: absolute;
-    bottom: 0;
+    position: fixed;
+    bottom: var(--big-gap);
+    width: calc(100% - var(--middle-gap) * 2) !important;
     z-index: 2;
 }
 
