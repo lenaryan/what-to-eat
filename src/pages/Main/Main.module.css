@@ -1,0 +1,14 @@
+.relative {
+    position: relative;
+    height: calc(100dvh - var(--big-gap) * 2);
+}
+
+.fixedBtn {
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+}
+
+.eatBtn {
+    margin-bottom: var(--big-gap);
+}
