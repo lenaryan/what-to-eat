@@ -5,14 +5,14 @@
 }
 
 :root {
-  --bg-light: #E1F5FE;
-  --btn-hover: #B3E5FC;
-  --light-font: #C5CAE9;
-  --title-color: #8C9EFF;
+  --light-color: #FBFBFB;
+  --accent-color: #FFFF82;
   --darkest: #1A237E;
+  --dark-bg: #0288D1;
   --big-gap: 40px;
   --middle-gap: 20px;
   --small-gap: 10px;
+  --max-width: 600px;
 }
 
 body {
@@ -21,12 +21,12 @@ body {
   font-family: "Days One", Arial, sans-serif;
   line-height: 1.5;
   color: var(--light-font);
-  background: linear-gradient(var(--darkest) 50%, #0288D1);
+  background: linear-gradient(var(--darkest) 50%, var(--dark-bg));
 }
 
 .container {
-  margin: var(--big-gap) var(--middle-gap);
-  max-width: 1600px;
+  margin: var(--big-gap) auto;
+  max-width: var(--max-width);
 }
 
 .button {
@@ -39,7 +39,7 @@ body {
   font-size: 20px;
   text-align: center;
   line-height: 1.2;
-  background-color: var(--bg-light);
+  background-color: var(--light-color);
   color: var(--darkest);
   transition: background-color 0.2s ease-in-out;
 }
@@ -47,7 +47,7 @@ body {
 .button:hover,
 .button:focus {
   outline: none;
-  background-color: var(--btn-hover);
+  background-color: var(--accent-color);
 }
 
 a {
@@ -58,7 +58,7 @@ h1, h2 {
   font-size: 32px;
   margin-bottom: var(--middle-gap);
   margin-top: 0;
-  color: var(--title-color);
+  color: var(--accent-color);
 }
 
 .list {
@@ -67,8 +67,16 @@ h1, h2 {
   padding-left: var(--middle-gap);
   font-size: 20px;
   line-height: 1;
+  color: var(--light-color);
 }
 
 .list__item:not(:last-of-type) {
   margin-bottom: var(--middle-gap);
+}
+
+@media (max-width: 640px) {
+  .container {
+    margin-left: var(--middle-gap);
+    margin-right: var(--middle-gap);
+  }
 }
