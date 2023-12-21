@@ -6,10 +6,11 @@
 
 :root {
   --light-color: #FBFBFB;
-  --accent-color: #FFFF82;
+  --light-bg: #D8E4FF;
+  --accent-color: #E6AACE;
   --darkest: #1A237E;
   --dark-bg: #0288D1;
-  --error-color: lightsteelblue;
+  --error-color: #D8E4FF;
   --big-gap: 40px;
   --middle-gap: 20px;
   --small-gap: 10px;
@@ -40,7 +41,7 @@ body {
   font-size: 20px;
   text-align: center;
   line-height: 1.2;
-  background-color: var(--light-color);
+  background-color: var(--light-bg);
   color: var(--darkest);
   transition: background-color 0.2s ease-in-out;
 }

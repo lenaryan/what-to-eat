@@ -1,3 +1,9 @@
 .eatBtn {
     margin-bottom: var(--big-gap);
 }
+
+.scrollByingList {
+    overflow-y: scroll;
+    /* TODO: don't hardcode height */
+    height: 200px;
+}

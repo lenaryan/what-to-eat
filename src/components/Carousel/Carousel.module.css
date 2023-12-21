@@ -24,7 +24,7 @@
 
 .slidePlate {
     flex: 1;
-    background-color: var(--light-color);
+    background-color: var(--light-bg);
     color: var(--darkest);
     width: 320px;
     padding: var(--middle-gap) calc(var(--middle-gap) - 5px);

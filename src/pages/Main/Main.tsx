@@ -13,7 +13,7 @@ const Main = () => {
             <Carousel />
             <button type="button" className={cn(`button ${styles.eatBtn}`)}>Что будем есть?</button>
             <h2>Список покупок</h2>
-            <ul className="list">
+            <ul className={cn(`list ${styles.scrollByingList}`)}>
                 {
                     byingList.map(product => (
                         <li className="list__item" key={product}>{product}</li>

@@ -16,7 +16,7 @@ const Carousel = () => {
                                         {day.breakfast}
                                     </li>
                                     <li className={styles.menuDish}>
-                                        <span>🍜</span>
+                                        <span>🫕</span>
                                         {day.lunch}
                                     </li>
                                     <li className={styles.menuDish}>
