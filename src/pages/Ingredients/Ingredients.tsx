@@ -21,7 +21,7 @@ const Ingredients = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const product = e.currentTarget.add.value;
+        const product = (e.currentTarget.add.value).toLowerCase();
         if (!product) return;
 
         const isRepeatedConst = ingredients.includes(product);
