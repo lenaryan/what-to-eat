@@ -8,7 +8,7 @@ const byingList = ["мюсли", "котлеты", "оливки", "лук", "п
 
 const Main = () => {
     return (
-        <section className="container relativeContainer">
+        <section className="container">
             <h2>Меню</h2>
             <Carousel />
             <button type="button" className={cn(`button ${styles.eatBtn}`)}>Что будем есть?</button>
@@ -20,7 +20,7 @@ const Main = () => {
                     ))
                 }
             </ul>
-            <Link to={urls.ingredients} className="button fixedBtn">Что в холодильнике?</Link>
+            <Link to={urls.ingredients} className="button">Что в холодильнике?</Link>
         </section>
     )
 }

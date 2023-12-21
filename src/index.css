@@ -17,18 +17,27 @@
   --max-width: 600px;
 }
 
+html, body, #root {
+  height: 100%;
+}
+
 body {
   margin: 0;
-  height: 100dvh;
   font-family: "Days One", Arial, sans-serif;
   line-height: 1.5;
   color: var(--light-font);
-  background: linear-gradient(var(--darkest) 50%, var(--dark-bg));
+  background-image: linear-gradient(var(--darkest) 50%, var(--dark-bg));
+  background-attachment: fixed;
 }
 
 .container {
-  margin: var(--big-gap) auto;
+  height: 100%;
+  margin: 0 auto;
+  padding: var(--big-gap) 0;
   max-width: var(--max-width);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
 .button {
@@ -94,26 +103,10 @@ input:focus {
   margin-bottom: var(--middle-gap);
 }
 
-.relativeContainer {
-  position: relative;
-  height: calc(100dvh - var(--big-gap) * 2);
-}
-
-.fixedBtn {
-  position: fixed;
-  bottom: var(--big-gap);
-  max-width: var(--max-width) !important;
-  z-index: 2;
-}
-
 @media (max-width: 640px) {
   .container {
     margin-left: var(--middle-gap);
     margin-right: var(--middle-gap);
-  }
-
-  .fixedBtn {
-    width: calc(100% - var(--middle-gap) * 2) !important;
   }
 }
 

@@ -41,7 +41,7 @@ const Ingredients = () => {
 
     // TODO: undo button?
     return (
-        <section className="container relativeContainer">
+        <section className="container">
             <h1>Что в холодильнике?</h1>
             <ul className={cn(`list ${styles.listStyle}`)}>
                 {
@@ -60,7 +60,7 @@ const Ingredients = () => {
                 <button className={styles.formBtn} type="submit" aria-label="Добавить">&#10003;</button>
             </form>
             {isRepeating && <p className={styles.isRepeating}>продукт уже есть в списке</p>}
-            <Link to={urls.main} className="button fixedBtn">Сохранить</Link>
+            <Link to={urls.main} className="button">Сохранить</Link>
         </section>
     )
 }

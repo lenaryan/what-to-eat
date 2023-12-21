@@ -4,6 +4,6 @@
 
 .scrollByingList {
     overflow-y: scroll;
-    /* TODO: don't hardcode height */
-    height: 200px;
+    flex: 1;
+    margin-bottom: var(--big-gap) !important;
 }

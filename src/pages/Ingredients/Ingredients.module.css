@@ -1,5 +1,7 @@
 .listStyle {
     margin-bottom: var(--middle-gap) !important;
+    flex: 1;
+    margin-bottom: var(--middle-gap);
 }
 
 .ingredient {
@@ -22,6 +24,7 @@
     align-items: center;
     justify-content: space-between;
     margin-left: calc(var(--middle-gap) - 5px);
+    margin-bottom: var(--middle-gap);
 }
 
 .formInput {
