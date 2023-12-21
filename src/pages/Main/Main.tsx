@@ -4,7 +4,7 @@ import cn from 'classnames'
 import { urls } from '../../constants';
 import Carousel from '../../components/Carousel';
 
-const byingList = ["мюсли", "котлеты", "оливки", "лук", "помидоры", "попить"]
+const byingList = ["мюсли", "котлеты", "оливки", "лук", "помидоры", "попить", "мюсли", "котлеты", "оливки", "лук", "помидоры", "попить"]
 
 const Main = () => {
     return (
