@@ -3,10 +3,10 @@ import { urls } from "../constants";
 
 const Ingredients = () => {
     return (
-        <>
-            Ingredients
-            <Link to={urls.main} className="button">Сохранить</Link>
-        </>
+        <section className="container relativeContainer">
+            <h1>Что в холодильнике?</h1>
+            <Link to={urls.main} className="button fixedBtn">Сохранить</Link>
+        </section>
     )
 }
 

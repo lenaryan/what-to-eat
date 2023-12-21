@@ -5,7 +5,7 @@ import { urls } from '../../constants';
 
 const Main = () => {
     return (
-        <section className={cn(`container ${styles.relative}`)}>
+        <section className="container relativeContainer">
             <h2>Меню</h2>
             <p>карусель</p>
             <button type="button" className={cn(`button ${styles.eatBtn}`)}>Что будем есть?</button>
@@ -18,7 +18,7 @@ const Main = () => {
                 <li className="list__item">помидоры</li>
                 <li className="list__item">попить</li>
             </ul>
-            <Link to={urls.ingredients} className={cn(`button ${styles.fixedBtn}`)}>Что в холодильнике?</Link>
+            <Link to={urls.ingredients} className="button fixedBtn">Что в холодильнике?</Link>
         </section>
     )
 }
