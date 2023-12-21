@@ -9,6 +9,7 @@
   --accent-color: #FFFF82;
   --darkest: #1A237E;
   --dark-bg: #0288D1;
+  --error-color: lightsteelblue;
   --big-gap: 40px;
   --middle-gap: 20px;
   --small-gap: 10px;
@@ -17,7 +18,7 @@
 
 body {
   margin: 0;
-  min-height: 100vh;
+  height: 100dvh;
   font-family: "Days One", Arial, sans-serif;
   line-height: 1.5;
   color: var(--light-font);
@@ -61,6 +62,17 @@ h1, h2 {
   color: var(--accent-color);
 }
 
+input {
+  font-family: inherit;
+  font-size: inherit;
+  transition: border-color 0.2s ease-in-out;
+}
+
+input:focus {
+  outline: none;
+  border-bottom-color: var(--accent-color);
+}
+
 .list {
   margin: 0;
   padding: 0;
@@ -74,9 +86,45 @@ h1, h2 {
   margin-bottom: var(--middle-gap);
 }
 
+.relativeContainer {
+  position: relative;
+  height: calc(100dvh - var(--big-gap) * 2);
+}
+
+.fixedBtn {
+  position: fixed;
+  bottom: var(--big-gap);
+  max-width: var(--max-width) !important;
+  z-index: 2;
+}
+
 @media (max-width: 640px) {
   .container {
     margin-left: var(--middle-gap);
     margin-right: var(--middle-gap);
+  }
+
+  .fixedBtn {
+    width: calc(100% - var(--middle-gap) * 2) !important;
+  }
+}
+
+@media (max-width: 400px) {
+  :root {
+    --big-gap: 36px;
+    --middle-gap: 18px;
+    --small-gap: 9px;
+  }
+
+  h1, h2 {
+    font-size: 28px;
+  }
+
+  .list {
+    font-size: 18px;
+  }
+
+  .button {
+    font-size: 18px;
   }
 }
