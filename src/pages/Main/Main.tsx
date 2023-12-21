@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
 import styles from './Main.module.css';
 import cn from 'classnames'
+import { urls } from '../../constants';
 
 const Main = () => {
     return (
@@ -16,7 +18,7 @@ const Main = () => {
                 <li className="list__item">помидоры</li>
                 <li className="list__item">попить</li>
             </ul>
-            <a href="#" className={cn(`button ${styles.fixedBtn}`)}>Что в холодильнике?</a>
+            <Link to={urls.ingredients} className={cn(`button ${styles.fixedBtn}`)}>Что в холодильнике?</Link>
         </section>
     )
 }

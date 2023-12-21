@@ -6,10 +6,16 @@
 .fixedBtn {
     position: fixed;
     bottom: var(--big-gap);
-    width: calc(100% - var(--middle-gap) * 2) !important;
+    max-width: var(--max-width) !important;
     z-index: 2;
 }
 
 .eatBtn {
     margin-bottom: var(--big-gap);
+}
+
+@media (max-width: 640px) {
+    .fixedBtn {
+        width: calc(100% - var(--middle-gap) * 2) !important;
+    }
 }
