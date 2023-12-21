@@ -1,0 +1,45 @@
+.carousel {
+    display: flex;
+    gap: var(--middle-gap);
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    margin-bottom: var(--big-gap);
+    margin-top: 0;
+    padding: 0;
+}
+
+.slideItem {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.slide {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    scroll-snap-align: center;
+}
+
+.slidePlate {
+    flex: 1;
+    background-color: var(--light-color);
+    color: var(--darkest);
+    width: 320px;
+    padding: var(--middle-gap) calc(var(--middle-gap) - 5px);
+    border-radius: 10px;
+}
+
+.menuDish {
+    font-size: 16px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.menuDish:last-of-type {
+    margin-bottom: 0;
+}
