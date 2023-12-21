@@ -9,6 +9,7 @@
   --accent-color: #FFFF82;
   --darkest: #1A237E;
   --dark-bg: #0288D1;
+  --error-color: lightsteelblue;
   --big-gap: 40px;
   --middle-gap: 20px;
   --small-gap: 10px;
@@ -17,7 +18,7 @@
 
 body {
   margin: 0;
-  min-height: 100vh;
+  height: 100dvh;
   font-family: "Days One", Arial, sans-serif;
   line-height: 1.5;
   color: var(--light-font);
@@ -59,6 +60,17 @@ h1, h2 {
   margin-bottom: var(--middle-gap);
   margin-top: 0;
   color: var(--accent-color);
+}
+
+input {
+  font-family: inherit;
+  font-size: inherit;
+  transition: border-color 0.2s ease-in-out;
+}
+
+input:focus {
+  outline: none;
+  border-bottom-color: var(--accent-color);
 }
 
 .list {

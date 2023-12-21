@@ -1,0 +1,59 @@
+.listStyle {
+    margin-bottom: var(--middle-gap) !important;
+}
+
+.ingredient {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ingredientBtn {
+    border: none;
+    background: none;
+    color: var(--error-color);
+    font-size: 32px;
+    line-height: var(--middle-gap);
+    padding: 0;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: calc(var(--middle-gap) - 5px);
+}
+
+.formInput {
+    border-color: transparent;
+    border-bottom-color: var(--light-color);
+    color: var(--light-color);
+    background: none;
+    width: 100%;
+    margin-right: var(--middle-gap);
+    line-height: 1.2;
+    padding: 0;
+    padding-bottom: 6px;
+}
+
+.formInput::placeholder {
+    color: var(--light-color);
+    opacity: 0.7;
+}
+
+.formBtn {
+    font-size: 30px;
+    line-height: var(--middle-gap);
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--accent-color);
+}
+
+.isRepeating {
+    color: var(--error-color);
+    margin-left: calc(var(--middle-gap) - 5px);
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 14px;
+}
