@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { urls } from "../../constants";
+import { urls } from "../../essentials/constants";
 import { useState } from "react";
 import cn from 'classnames';
 import styles from './Ingredients.module.css';
@@ -58,8 +58,8 @@ const Ingredients = () => {
             <form className={styles.form} onSubmit={handleSubmit}>
                 <input name="add" type="text" className={styles.formInput} aria-label="что ещё?" placeholder="что ещё?" />
                 <button className={styles.formBtn} type="submit" aria-label="Добавить">&#10003;</button>
+                {isRepeating && <p className={styles.isRepeating}>продукт уже есть в списке</p>}
             </form>
-            {isRepeating && <p className={styles.isRepeating}>продукт уже есть в списке</p>}
             <Link to={urls.main} className="button">Сохранить</Link>
         </section>
     )

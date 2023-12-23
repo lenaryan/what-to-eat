@@ -1,13 +1,15 @@
-import { days, menu } from "../../constants";
+import { days } from "../../essentials/constants";
+import { CarouselProps } from "../../essentials/types";
 import styles from './Carousel.module.css';
 
-const Carousel = () => {
+const Carousel = ({ menu }: CarouselProps) => {
     return (
         <>
-            <ul className={styles.carousel}>
+            { 
+                !!menu.length && <ul className={styles.carousel}>
                 {
                     menu.map((day, index) => (
-                        <li className={styles.slideItem}>
+                        <li className={styles.slideItem} key={`${day}${index}`}>
                             <article className={styles.slide}>
                                 <h3>{days[index]}</h3>
                                 <div className={styles.slidePlate}>
@@ -28,7 +30,8 @@ const Carousel = () => {
                         </li>
                     ))
                 }
-            </ul>
+                </ul>
+            }
         </>
     )
 }

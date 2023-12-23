@@ -24,7 +24,8 @@
     align-items: center;
     justify-content: space-between;
     margin-left: calc(var(--middle-gap) - 5px);
-    margin-bottom: var(--middle-gap);
+    position: relative;
+    margin-bottom: calc(var(--middle-gap) + var(--small-gap));
 }
 
 .formInput {
@@ -55,8 +56,9 @@
 
 .isRepeating {
     color: var(--error-color);
-    margin-left: calc(var(--middle-gap) - 5px);
     margin-top: 0;
     margin-bottom: 0;
     font-size: 14px;
+    position: absolute;
+    top: 100%;
 }
