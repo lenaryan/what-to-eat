@@ -12,12 +12,16 @@ export const setIngredientsList = (ingredientsList: string[]) => {
 
 export const getMenuFromBase = () => {
     const menu = localStorage.getItem('menu');
-    return menu ? menu.split(',') : [];
+    if (!menu) return [];
+    const menuArray = menu.split(';');
+    console.log('menu array', menuArray);
+    console.log('menu', menu);
+    return menuArray.map(item => JSON.parse(item));
 };
 
-// TODO: stringify json before adding to LocalStorage???
 export const setMenuToBase = (menu: DayMenu[]) => {
-    localStorage.setItem('menu', menu.join(','));
+    const stringifiedArray = menu.map(item => JSON.stringify(item));
+    localStorage.setItem('menu', stringifiedArray.join(';'));
 };
 
 export const getShoppingListFromBase = () => {

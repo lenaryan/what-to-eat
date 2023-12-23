@@ -20,12 +20,18 @@ const Main = () => {
     const handleCreateMenu = () => {
         setMenu([
             {
+                breakfast: dishes.breakfastList[0].dish,
+                lunch: dishes.lunchList[0].dish,
+                dinner: dishes.dinnerList[0].dish,
+            },
+        ]);
+        setMenuToBase([
+            {
                 "breakfast": dishes.breakfastList[0].dish,
                 "lunch": dishes.lunchList[0].dish,
                 "dinner": dishes.dinnerList[0].dish,
             },
-        ]);
-        setMenuToBase(menu);
+        ])
     }
 
     // const setMeal = (day: keyof typeof days, meal: string, dish: string) => {
