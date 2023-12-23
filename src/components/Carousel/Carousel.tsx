@@ -1,5 +1,5 @@
-import { days } from "../../essentials/constants";
-import { CarouselProps } from "../../essentials/types";
+import { days } from "../../shared/constants";
+import { CarouselProps } from "../../shared/types";
 import styles from './Carousel.module.css';
 
 const Carousel = ({ menu }: CarouselProps) => {

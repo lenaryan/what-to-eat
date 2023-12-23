@@ -1,7 +1,7 @@
 import { Route, RouterProvider, Routes, createBrowserRouter } from "react-router-dom";
 import Ingredients from "./pages/Ingredients";
 import Main from "./pages/Main";
-import { urls } from "./essentials/constants";
+import { urls } from "./shared/constants";
 
 const router = createBrowserRouter([
   {path: "*", Component: () => {

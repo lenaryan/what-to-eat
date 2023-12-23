@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import styles from './Main.module.css';
 import cn from 'classnames'
-import { byingList, dishes, urls } from '../../essentials/constants';
+import { byingList, dishes, urls } from '../../shared/constants';
 import Carousel from '../../components/Carousel';
 import { useState } from 'react';
-import { DayMenuType } from '../../essentials/types';
+import { DayMenuType } from '../../shared/types';
 
 const Main = () => {
     const [menu, setMenu] = useState<DayMenuType[]>([]);

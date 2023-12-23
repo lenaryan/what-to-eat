@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { urls } from "../../essentials/constants";
+import { urls } from "../../shared/constants";
 import { useState } from "react";
 import cn from 'classnames';
 import styles from './Ingredients.module.css';
