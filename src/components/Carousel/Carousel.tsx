@@ -2,6 +2,7 @@ import { days } from "../../shared/constants";
 import { CarouselProps } from "../../shared/types";
 import styles from './Carousel.module.css';
 
+// TODO: loader?
 const Carousel = ({ menu }: CarouselProps) => {
     return (
         <>
