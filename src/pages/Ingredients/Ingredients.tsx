@@ -3,14 +3,14 @@ import { urls } from "../../shared/constants";
 import { useEffect, useState } from "react";
 import cn from 'classnames';
 import styles from './Ingredients.module.css';
-import { getIngredientsList, setIngredientsList } from "../../shared/api";
+import { getIngredientsFromBase, setIngredientsToBase } from "../../shared/api";
 
 const Ingredients = () => {
     const [ingredients, setIngredients] = useState<string[]>([]);
     const [isRepeating, setIsRepeating] = useState(false);
 
     useEffect(() => {
-        setIngredients(getIngredientsList);
+        setIngredients(getIngredientsFromBase);
     }, []);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -34,7 +34,7 @@ const Ingredients = () => {
     }
 
     const handleSaveIngredients = () => {
-        setIngredientsList(ingredients);
+        setIngredientsToBase(ingredients);
     }
 
     // TODO: undo button?

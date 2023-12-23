@@ -1,12 +1,12 @@
 import { defaultShoppingList, ingredientsList } from "./constants";
 import { DayMenu } from "./types";
 
-export const getIngredientsList = () => {
+export const getIngredientsFromBase = () => {
     const ingredients = localStorage.getItem('ingredients');
     return ingredients ? ingredients.split(';') : ingredientsList;
 };
 
-export const setIngredientsList = (ingredientsList: string[]) => {
+export const setIngredientsToBase = (ingredientsList: string[]) => {
     localStorage.setItem('ingredients', ingredientsList.join(';'));
 };
 
