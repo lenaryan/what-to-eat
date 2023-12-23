@@ -1,11 +1,11 @@
-export type DayMenuType = {
+export type DayMenu = {
     "breakfast": string,
     "lunch": string,
     "dinner": string,
 }
 
 export type CarouselProps = {
-    menu: DayMenuType[]
+    menu: DayMenu[]
 }
 
 export type daysType = {
