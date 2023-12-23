@@ -12,9 +12,9 @@ const Main = () => {
     const handleCreateMenu = () => {
         setMenu([
             {
-                "breakfast": dishes.breakfast[0].dish,
-                "lunch": dishes.lunch[0].dish,
-                "dinner": dishes.dinner[0].dish,
+                "breakfast": dishes.breakfastList[0].dish,
+                "lunch": dishes.lunchList[0].dish,
+                "dinner": dishes.dinnerList[0].dish,
             },
         ]);
     }

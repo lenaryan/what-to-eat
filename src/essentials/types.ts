@@ -11,3 +11,14 @@ export type CarouselProps = {
 export type daysType = {
     [index: number]: string;
 }
+
+type MealsArrayType = {
+    'dish': string,
+    'ingredients': string[]
+}
+
+export type DishesType = {
+    'breakfastList': MealsArrayType[],
+    'lunchList': MealsArrayType[],
+    'dinnerList': MealsArrayType[],
+}

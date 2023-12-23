@@ -1,4 +1,4 @@
-import { daysType } from "./types"
+import { DishesType, daysType } from "./types"
 
 export const urls = {
     main: '/',
@@ -31,21 +31,21 @@ export const byingList = ["мюсли", "котлеты", "оливки", "лу�
 //     },
 // ]
 
-export const dishes = {
-    'breakfast': [
+export const dishes: DishesType = {
+    'breakfastList': [
         {
             'dish': 'мюсли, бутерброды и кофе',
             'ingredients': ['мюсли', 'апельсиновый сок', 'йогурт', 'молоко', 'творожный сыр', 'хлеб', 'мясо', 'кофе']
         },
 
     ],
-    'lunch': [
+    'lunchList': [
         {
             'dish': 'сырники',
             'ingredients': ['творог', 'яйца', 'мука']
         },
     ],
-    'dinner': [
+    'dinnerList': [
         {
             'dish': 'салат с помидорами и сыром',
             'ingredients': ['помидоры', 'сыр', 'уксус', 'масло', 'лук']
