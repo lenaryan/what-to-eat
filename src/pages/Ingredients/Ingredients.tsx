@@ -1,23 +1,17 @@
 import { Link } from "react-router-dom";
 import { urls } from "../../shared/constants";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import cn from 'classnames';
 import styles from './Ingredients.module.css';
-
-const ingredientsList = [
-    'огурцы',
-    'сметана',
-    'растительное масло',
-    'кетчуп',
-    'молоко',
-    'листовой салат',
-    'замороженная смесь',
-    'мороженое'
-]
+import { getIngredientsList, setIngredientsList } from "../../shared/api";
 
 const Ingredients = () => {
-    const [ingredients, setIngredients] = useState(ingredientsList);
+    const [ingredients, setIngredients] = useState<string[]>([]);
     const [isRepeating, setIsRepeating] = useState(false);
+
+    useEffect(() => {
+        setIngredients(getIngredientsList);
+    }, []);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -37,6 +31,10 @@ const Ingredients = () => {
     const handleDelete = (product: string) => {
         const newIngr = ingredients.filter(item => item !== product);
         setIngredients(newIngr);
+    }
+
+    const handleSaveIngredients = () => {
+        setIngredientsList(ingredients);
     }
 
     // TODO: undo button?
@@ -60,7 +58,7 @@ const Ingredients = () => {
                 <button className={styles.formBtn} type="submit" aria-label="Добавить">&#10003;</button>
                 {isRepeating && <p className={styles.isRepeating}>продукт уже есть в списке</p>}
             </form>
-            <Link to={urls.main} className="button">Сохранить</Link>
+            <Link to={urls.main} className="button" onClick={handleSaveIngredients}>Сохранить</Link>
         </section>
     )
 }
