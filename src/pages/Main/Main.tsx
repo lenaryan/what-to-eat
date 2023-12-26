@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import styles from './Main.module.css';
 import cn from 'classnames'
-import { dishes, urls } from '../../shared/constants';
+import { urls } from '../../shared/constants';
 import Carousel from '../../components/Carousel';
 import { useEffect, useState } from 'react';
 import { DayMenu } from '../../shared/types';
-import { getMenuFromBase, getShoppingListFromBase, setMenuToBase } from '../../shared/api';
+import { getMenuFromBase, getShoppingListFromBase, setMenuToBase, setShoppingListToBase } from '../../shared/api';
+import { generateMeal } from '../../shared/functions';
 
 const Main = () => {
     const [menu, setMenu] = useState<DayMenu[]>([]);
@@ -18,25 +19,15 @@ const Main = () => {
 
     // TODO: think how to keep and save menu – what day, what slot, etc.
     const handleCreateMenu = () => {
-        setMenu([
-            {
-                breakfast: dishes.breakfastList[0].dish,
-                lunch: dishes.lunchList[0].dish,
-                dinner: dishes.dinnerList[0].dish,
-            },
-        ]);
-        setMenuToBase([
-            {
-                "breakfast": dishes.breakfastList[0].dish,
-                "lunch": dishes.lunchList[0].dish,
-                "dinner": dishes.dinnerList[0].dish,
-            },
-        ])
-    }
+        const { menu, whatToBuy } = generateMeal();
 
-    // const setMeal = (day: keyof typeof days, meal: string, dish: string) => {
-    
-    // };
+        setMenu([menu]);
+        setMenuToBase([menu])
+
+        const newShoppingList = Array.from(new Set([...shoppingList, ...whatToBuy]))
+        setShoppingList([...newShoppingList]);
+        setShoppingListToBase([...newShoppingList]);
+    }
 
     return (
         <section className="container">
