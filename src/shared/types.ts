@@ -1,7 +1,5 @@
 export type DayMenu = {
-    "breakfast": string,
-    "lunch": string,
-    "dinner": string,
+    [key: string]: string,
 }
 
 export type CarouselProps = {
@@ -12,13 +10,11 @@ export type daysType = {
     [index: number]: string;
 }
 
-type MealsArrayType = {
+export type MealsArrayType = {
     'dish': string,
     'ingredients': string[]
 }
 
 export type DishesType = {
-    'breakfastList': MealsArrayType[],
-    'lunchList': MealsArrayType[],
-    'dinnerList': MealsArrayType[],
+    [key: string]: MealsArrayType[],
 }
