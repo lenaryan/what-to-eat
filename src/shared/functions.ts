@@ -41,7 +41,7 @@ const getDishForMeal = (meal: string, ingredientsInFridge: string[]) => {
             if (ingredientsInFridge.includes(dishIngredient)) {
                 inFridge++;
             } else {
-                toBuy.push[dishIngredient]
+                toBuy.push(dishIngredient)
             }
         })
         const percent = inFridge / dish.ingredients.length;
