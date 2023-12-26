@@ -54,6 +54,7 @@ const Ingredients = () => {
                 }
             </ul>
             <form className={styles.form} onSubmit={handleSubmit}>
+                {/* TODO: datalist with chosing from list of constants? */}
                 <input name="add" type="text" className={styles.formInput} aria-label="что ещё?" placeholder="что ещё?" />
                 <button className={styles.formBtn} type="submit" aria-label="Добавить">&#10003;</button>
                 {isRepeating && <p className={styles.isRepeating}>продукт уже есть в списке</p>}

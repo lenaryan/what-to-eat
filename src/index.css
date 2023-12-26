@@ -4,6 +4,8 @@
     url("./assets/fonts/DaysOne-Regular.ttf") format("TrueType");
 }
 
+/* TODO: style scrollbars? */
+
 :root {
   --light-color: #FBFBFB;
   --light-bg: #D8E4FF;
