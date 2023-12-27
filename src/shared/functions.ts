@@ -52,5 +52,27 @@ const getDishForMeal = (meal: string, ingredientsInFridge: string[]) => {
         }
     })
 
+    if (!dishWmaxPercent) {
+        return getRandomDish(meal, ingredientsInFridge);
+    }
+
     return { dish: dishWmaxPercent, whatToBuy };
+}
+
+const getRandomDish = (meal: string, ingredientsInFridge: string[]) => {
+    const key = meal + "List";
+    const whatToBuy: string[] = [];
+
+    const randomDishIndex = Math.floor(Math.random() * (dishes[key].length));
+    console.log('random dish index', randomDishIndex);
+    
+    const randomDish = dishes[key][randomDishIndex];
+
+    randomDish.ingredients.forEach((dishIngredient: string) => {
+        if (!ingredientsInFridge.includes(dishIngredient)) {
+            whatToBuy.push(dishIngredient)
+        }
+    })
+
+    return { dish: randomDish.dish, whatToBuy };
 }
