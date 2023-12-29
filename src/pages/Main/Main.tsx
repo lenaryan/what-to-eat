@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './Main.module.css';
 import cn from 'classnames'
-import { urls } from '../../shared/constants';
 import Carousel from '../../components/Carousel';
 import { useEffect, useState } from 'react';
 import { DayMenu } from '../../shared/types';
@@ -42,7 +41,7 @@ const Main = () => {
                     ))
                 }
             </ul>
-            <Link to={urls.ingredients} className="button">Что в холодильнике?</Link>
+            <Link to='/ingredients' className="button">Что в холодильнике?</Link>
         </section>
     )
 }

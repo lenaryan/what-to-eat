@@ -1,16 +1,10 @@
-import { getIngredientsFromBase } from "./api";
-import { dishes } from "./constants"
+import { fetchIngredients } from "./api";
+import { breakfastList, dinnerList, lunchList } from "./constants";
 import { MealsArrayType } from "./types";
 
 export const generateMeal = () => {
-    // собрать все нужные ингредиенты в массив
-    // пройтись по каждому блюду в массиве приёма пищи
-    // чем больше ингредиентов из состава есть дома, тем больше вероятность, что будем есть это блюдо
-    // переменная, считающая максимальный процент совпавших ингредиентов
-    // переменная, запоминающая блюдо с максимальным числом совпавших ингредиентов
-    // массив, запоминающий, что надо докупить
     let whatToBuy: string[] = [];
-    const ingredientsInFridge = getIngredientsFromBase();
+    const ingredientsInFridge = fetchIngredients();
 
     const { dish: breakfastDish, whatToBuy: buyForBreakfast } = getDishForMeal('breakfast', ingredientsInFridge);
     const { dish: lunchDish, whatToBuy: buyForLunch } = getDishForMeal('lunch', ingredientsInFridge);
@@ -28,13 +22,23 @@ export const generateMeal = () => {
     }
 }
 
+const getCurrentMealArray = (meal: string): MealsArrayType[] => {
+    switch (meal) {
+        case 'breakfast': return breakfastList;
+        case 'lunch': return lunchList;
+        case 'dinner': return dinnerList;
+        default: return lunchList;
+    }
+}
+
 const getDishForMeal = (meal: string, ingredientsInFridge: string[]) => {
-    const key = meal + "List";
     let maxPercent = 0;
     let dishWmaxPercent: string = '';
     let whatToBuy: string[] = [];
 
-    dishes[key].forEach((dish: MealsArrayType) => {
+    const currentMealArray = getCurrentMealArray(meal);
+
+    currentMealArray.forEach((dish: MealsArrayType) => {
         let inFridge = 0;
         const toBuy: string[] = [];
         dish.ingredients.forEach((dishIngredient: string) => {
@@ -60,13 +64,13 @@ const getDishForMeal = (meal: string, ingredientsInFridge: string[]) => {
 }
 
 const getRandomDish = (meal: string, ingredientsInFridge: string[]) => {
-    const key = meal + "List";
     const whatToBuy: string[] = [];
+    const currentMealArray = getCurrentMealArray(meal);
 
-    const randomDishIndex = Math.floor(Math.random() * (dishes[key].length));
+    const randomDishIndex = Math.floor(Math.random() * (currentMealArray.length));
     console.log('random dish index', randomDishIndex);
     
-    const randomDish = dishes[key][randomDishIndex];
+    const randomDish = currentMealArray[randomDishIndex];
 
     randomDish.ingredients.forEach((dishIngredient: string) => {
         if (!ingredientsInFridge.includes(dishIngredient)) {

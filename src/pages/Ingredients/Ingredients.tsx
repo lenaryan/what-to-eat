@@ -1,16 +1,18 @@
 import { Link } from "react-router-dom";
-import { urls } from "../../shared/constants";
 import { useEffect, useState } from "react";
 import cn from 'classnames';
 import styles from './Ingredients.module.css';
-import { getIngredientsFromBase, setIngredientsToBase } from "../../shared/api";
+import { fetchIngredients, setIngredientsToBase } from "../../shared/api";
+import { IngredientsType } from "../../shared/types";
 
 const Ingredients = () => {
-    const [ingredients, setIngredients] = useState<string[]>([]);
+    const [ingredients, setIngredients] = useState<IngredientsType[]>([]);
     const [isRepeating, setIsRepeating] = useState(false);
 
     useEffect(() => {
-        setIngredients(getIngredientsFromBase);
+        fetchIngredients(setIngredients);
+        setIngredients(ingredients);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -18,6 +20,7 @@ const Ingredients = () => {
         const product = (e.currentTarget.add.value).toLowerCase();
         if (!product) return;
 
+        // TODO: добавлять продукт сразу в базу
         const isRepeatedConst = ingredients.includes(product);
         if (isRepeatedConst) {
             setIsRepeating(isRepeatedConst);
@@ -28,8 +31,9 @@ const Ingredients = () => {
         }
     }
 
-    const handleDelete = (product: string) => {
-        const newIngr = ingredients.filter(item => item !== product);
+    const handleDelete = (product: IngredientsType) => {
+        // TODO: сразу удалять из базы
+        const newIngr = ingredients.filter(item => item.title !== product.title);
         setIngredients(newIngr);
     }
 
@@ -44,9 +48,9 @@ const Ingredients = () => {
             <ul className={cn(`list ${styles.listStyle}`)}>
                 {
                     ingredients.map(product => (
-                        <li className="list__item" key={product}>
+                        <li className="list__item" key={product.id}>
                             <div className={styles.ingredient}>
-                                <span>{product}</span>
+                                <span>{product.title}</span>
                                 <button className={styles.ingredientBtn} type="button" onClick={() => handleDelete(product)}>&times;</button>
                             </div>
                         </li>
@@ -59,7 +63,8 @@ const Ingredients = () => {
                 <button className={styles.formBtn} type="submit" aria-label="Добавить">&#10003;</button>
                 {isRepeating && <p className={styles.isRepeating}>продукт уже есть в списке</p>}
             </form>
-            <Link to={urls.main} className="button" onClick={handleSaveIngredients}>Сохранить</Link>
+            {/* TODO: переименовать кнопку? */}
+            <Link to='/' className="button" onClick={handleSaveIngredients}>Сохранить</Link>
         </section>
     )
 }

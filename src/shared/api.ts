@@ -1,15 +1,20 @@
 import { createClient } from "@supabase/supabase-js";
-import { SUPABASE_KEY, SUPABASE_URL, defaultShoppingList, ingredientsList } from "./constants";
-import { DayMenu } from "./types";
+import { SUPABASE_KEY, SUPABASE_URL, defaultShoppingList } from "./constants";
+import { DayMenu, IngredientsType } from "./types";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-export const getIngredientsFromBase = () => {
-    const ingredients = localStorage.getItem('ingredients');
-    return ingredients ? ingredients.split(';') : ingredientsList;
+export const fetchIngredients = async (setIngredients: (value: React.SetStateAction<IngredientsType[]>) => void) => {
+    // TODO: set up state!!!
+    try {
+        const { data: ingredients, error } = await supabase.from('ingredients').select();
+        if (ingredients) setIngredients(ingredients);
+    } catch (error) {
+        console.log(error);
+    }
 };
 
-export const setIngredientsToBase = (ingredientsList: string[]) => {
+export const setIngredientsToBase = (ingredientsList: IngredientsType[]) => {
     localStorage.setItem('ingredients', ingredientsList.join(';'));
 };
 
