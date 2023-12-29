@@ -1,5 +1,8 @@
-import { defaultShoppingList, ingredientsList } from "./constants";
+import { createClient } from "@supabase/supabase-js";
+import { SUPABASE_KEY, SUPABASE_URL, defaultShoppingList, ingredientsList } from "./constants";
 import { DayMenu } from "./types";
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 export const getIngredientsFromBase = () => {
     const ingredients = localStorage.getItem('ingredients');
