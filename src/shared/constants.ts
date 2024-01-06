@@ -19,16 +19,6 @@ export const ingredientsList = [
     'мороженое'
 ]
 
-export const defaultShoppingList = [
-    "овощная смесь",
-    "зелень",
-    "овощи",
-    "сливочное масло",
-    "сыр",
-    "хлеб",
-    "кофе"
-]
-
 export const breakfastList: MealsArrayType[] = [
     {
         'dish': 'мюсли, бутерброды и кофе',

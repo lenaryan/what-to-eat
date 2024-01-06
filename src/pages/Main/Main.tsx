@@ -31,7 +31,7 @@ const Main = () => {
     return (
         <section className="container">
             <h2>Меню</h2>
-            <Carousel menu={menu} />
+            {/* <Carousel menu={menu} /> */}
             <button type="button" className={cn(`button ${styles.eatBtn}`)} onClick={handleCreateMenu}>Что будем есть?</button>
             <h2>Список покупок</h2>
             <ul className={cn(`list ${styles.scrollByingList}`)}>

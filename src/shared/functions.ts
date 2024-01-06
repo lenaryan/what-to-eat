@@ -1,6 +1,6 @@
 import { fetchIngredients } from "./api";
 import { breakfastList, dinnerList, lunchList } from "./constants";
-import { MealsArrayType } from "./types";
+import { IngredientsType, MealsArrayType } from "./types";
 
 export const generateMeal = () => {
     let whatToBuy: string[] = [];
@@ -79,4 +79,9 @@ const getRandomDish = (meal: string, ingredientsInFridge: string[]) => {
     })
 
     return { dish: randomDish.dish, whatToBuy };
+}
+
+export const isRepeatingItem = (list: IngredientsType[], newItem: string) => {
+    const foundIndex = list.findIndex(item => item.title === newItem);
+    return foundIndex > -1;
 }
