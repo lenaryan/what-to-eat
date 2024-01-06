@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './Main.module.css';
 import cn from 'classnames'
-import { urls } from '../../shared/constants';
 import Carousel from '../../components/Carousel';
 import { useEffect, useState } from 'react';
 import { DayMenu } from '../../shared/types';
@@ -32,7 +31,7 @@ const Main = () => {
     return (
         <section className="container">
             <h2>Меню</h2>
-            <Carousel menu={menu} />
+            {/* <Carousel menu={menu} /> */}
             <button type="button" className={cn(`button ${styles.eatBtn}`)} onClick={handleCreateMenu}>Что будем есть?</button>
             <h2>Список покупок</h2>
             <ul className={cn(`list ${styles.scrollByingList}`)}>
@@ -42,7 +41,7 @@ const Main = () => {
                     ))
                 }
             </ul>
-            <Link to={urls.ingredients} className="button">Что в холодильнике?</Link>
+            <Link to='/ingredients' className="button">Что в холодильнике?</Link>
         </section>
     )
 }

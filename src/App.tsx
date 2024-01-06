@@ -1,14 +1,13 @@
 import { Route, RouterProvider, Routes, createBrowserRouter } from "react-router-dom";
 import Ingredients from "./pages/Ingredients";
 import Main from "./pages/Main";
-import { urls } from "./shared/constants";
 
 const router = createBrowserRouter([
   {path: "*", Component: () => {
     return (
       <Routes>
-        <Route index path={urls.main} element={<Main />} />
-        <Route path={urls.ingredients} element={<Ingredients />} />
+        <Route index path='/' element={<Main />} />
+        <Route path='/ingredients' element={<Ingredients />} />
       </Routes>
     )
   }},

@@ -1,16 +1,21 @@
 import { Link } from "react-router-dom";
-import { urls } from "../../shared/constants";
 import { useEffect, useState } from "react";
 import cn from 'classnames';
 import styles from './Ingredients.module.css';
-import { getIngredientsFromBase, setIngredientsToBase } from "../../shared/api";
+import { deleteIngredientFromBase, fetchIngredients, setIngredientToBase } from "../../shared/api";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../redux/store";
+import { addIngredientToList, removeIngredientFromList } from "../../redux/ingredientsSlice";
+import { isRepeatingItem } from "../../shared/functions";
 
 const Ingredients = () => {
-    const [ingredients, setIngredients] = useState<string[]>([]);
+    const { ingredients } = useSelector((state: RootState) => state.ingredientsSlice);
+    const dispatch = useDispatch<AppDispatch>()
     const [isRepeating, setIsRepeating] = useState(false);
 
     useEffect(() => {
-        setIngredients(getIngredientsFromBase);
+        dispatch(fetchIngredients());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -18,36 +23,32 @@ const Ingredients = () => {
         const product = (e.currentTarget.add.value).toLowerCase();
         if (!product) return;
 
-        const isRepeatedConst = ingredients.includes(product);
+        const isRepeatedConst = isRepeatingItem(ingredients, product);
         if (isRepeatedConst) {
             setIsRepeating(isRepeatedConst);
         } else {
             if (isRepeatedConst !== isRepeating) setIsRepeating(isRepeatedConst);
             e.currentTarget.add.value = "";
-            setIngredients([...ingredients, product]);
+            dispatch(addIngredientToList({ id: ingredients.length, title: product}));
+            setIngredientToBase(product);
         }
     }
 
     const handleDelete = (product: string) => {
-        const newIngr = ingredients.filter(item => item !== product);
-        setIngredients(newIngr);
+        dispatch(removeIngredientFromList(product));
+        deleteIngredientFromBase(product);
     }
 
-    const handleSaveIngredients = () => {
-        setIngredientsToBase(ingredients);
-    }
-
-    // TODO: undo button?
     return (
         <section className="container">
             <h1>Что в холодильнике?</h1>
             <ul className={cn(`list ${styles.listStyle}`)}>
                 {
                     ingredients.map(product => (
-                        <li className="list__item" key={product}>
+                        <li className="list__item" key={product.id}>
                             <div className={styles.ingredient}>
-                                <span>{product}</span>
-                                <button className={styles.ingredientBtn} type="button" onClick={() => handleDelete(product)}>&times;</button>
+                                <span>{product.title}</span>
+                                <button className={styles.ingredientBtn} type="button" onClick={() => handleDelete(product.title)}>&times;</button>
                             </div>
                         </li>
                     ))
@@ -59,7 +60,7 @@ const Ingredients = () => {
                 <button className={styles.formBtn} type="submit" aria-label="Добавить">&#10003;</button>
                 {isRepeating && <p className={styles.isRepeating}>продукт уже есть в списке</p>}
             </form>
-            <Link to={urls.main} className="button" onClick={handleSaveIngredients}>Сохранить</Link>
+            <Link to='/' className="button">Выйти</Link>
         </section>
     )
 }
