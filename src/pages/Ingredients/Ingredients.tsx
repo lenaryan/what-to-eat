@@ -29,7 +29,7 @@ const Ingredients = () => {
         } else {
             if (isRepeatedConst !== isRepeating) setIsRepeating(isRepeatedConst);
             e.currentTarget.add.value = "";
-            dispatch(addIngredientToList({ id: ingredients.length, title: product}));
+            dispatch(addIngredientToList({ title: product}));
             setIngredientToBase(product);
         }
     }
@@ -44,8 +44,8 @@ const Ingredients = () => {
             <h1>Что в холодильнике?</h1>
             <ul className={cn(`list ${styles.listStyle}`)}>
                 {
-                    ingredients.map(product => (
-                        <li className="list__item" key={product.id}>
+                    ingredients.map((product, index) => (
+                        <li className="list__item" key={index}>
                             <div className={styles.ingredient}>
                                 <span>{product.title}</span>
                                 <button className={styles.ingredientBtn} type="button" onClick={() => handleDelete(product.title)}>&times;</button>
@@ -60,7 +60,7 @@ const Ingredients = () => {
                 <button className={styles.formBtn} type="submit" aria-label="Добавить">&#10003;</button>
                 {isRepeating && <p className={styles.isRepeating}>продукт уже есть в списке</p>}
             </form>
-            <Link to='/' className="button">Выйти</Link>
+            <Link to='/' className="button">Назад</Link>
         </section>
     )
 }

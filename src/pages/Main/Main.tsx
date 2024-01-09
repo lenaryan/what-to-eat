@@ -4,28 +4,33 @@ import cn from 'classnames'
 import Carousel from '../../components/Carousel';
 import { useEffect, useState } from 'react';
 import { DayMenu } from '../../shared/types';
-import { getMenuFromBase, getShoppingListFromBase, setMenuToBase, setShoppingListToBase } from '../../shared/api';
+import { getMenuFromBase, fetchShoppingList, setMenuToBase, setShoppingListToBase } from '../../shared/api';
 import { generateMeal } from '../../shared/functions';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../redux/store';
 
 const Main = () => {
-    const [menu, setMenu] = useState<DayMenu[]>([]);
-    const [shoppingList, setShoppingList] = useState<string[]>([]);
+    // const [menu, setMenu] = useState<DayMenu[]>([]);
+    // const [shoppingList, setShoppingList] = useState<string[]>([]);
+    const { shoppingList } = useSelector((state: RootState) => state.shoppingSlice)
+    const dispatch = useDispatch<AppDispatch>()
 
     useEffect(() => {
-        setShoppingList(getShoppingListFromBase);
-        setMenu(getMenuFromBase);
+        dispatch(fetchShoppingList());
+        // setMenu(getMenuFromBase);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     // TODO: think how to keep and save menu – what day, what slot, etc.
     const handleCreateMenu = () => {
         const { menu, whatToBuy } = generateMeal();
 
-        setMenu([menu]);
+        // setMenu([menu]);
         setMenuToBase([menu])
 
         const newShoppingList = Array.from(new Set([...shoppingList, ...whatToBuy]))
-        setShoppingList([...newShoppingList]);
-        setShoppingListToBase([...newShoppingList]);
+        // setShoppingList([...newShoppingList]);
+        // setShoppingListToBase([...newShoppingList]);
     }
 
     return (
@@ -37,7 +42,7 @@ const Main = () => {
             <ul className={cn(`list ${styles.scrollByingList}`)}>
                 {
                     shoppingList?.map((product, index) => (
-                        <li className="list__item" key={product + index}>{product}</li>
+                        <li className="list__item" key={index}>{product.title}</li>
                     ))
                 }
             </ul>

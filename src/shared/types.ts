@@ -15,7 +15,6 @@ export type MealsArrayType = {
     'ingredients': string[]
 }
 
-export type IngredientsType = {
-    id: number,
+export type ListType = {
     title: string
 }

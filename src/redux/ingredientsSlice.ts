@@ -1,9 +1,9 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { IngredientsType } from '../shared/types'
 import { fetchIngredients } from '../shared/api'
+import { ListType } from '../shared/types'
 
-export interface IngredientsState {
-  ingredients: IngredientsType[]
+interface IngredientsState {
+  ingredients: ListType[]
 }
 
 const initialState: IngredientsState = {
@@ -14,11 +14,11 @@ export const ingredientsSlice = createSlice({
   name: 'ingredientsSlice',
   initialState,
   reducers: {
-    addIngredientToList: (state, action: PayloadAction<IngredientsType>) => {
-      state.ingredients.push({id: action.payload.id, title: action.payload.title});
+    addIngredientToList: (state, action: PayloadAction<ListType>) => {
+      state.ingredients.push({ title: action.payload.title });
     },
     removeIngredientFromList: (state, action: PayloadAction<string>) => {
-      state.ingredients = state.ingredients.filter((prod: IngredientsType) => prod.title !== action.payload);
+      state.ingredients = state.ingredients.filter((prod: ListType) => prod.title !== action.payload);
     },
   },
   extraReducers: (builder) => {

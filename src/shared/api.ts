@@ -6,8 +6,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 export const fetchIngredients = createAsyncThunk('fetchIngredients', async () => {
-    const { data: ingredients } = await supabase.from('ingredients').select();
-    return ingredients ?? [];
+    const { data } = await supabase.from('ingredients').select('title');
+    return data ?? [];
 });
 
 export const setIngredientToBase = async (title: string) => {
@@ -32,10 +32,10 @@ export const setMenuToBase = (menu: DayMenu[]) => {
     // localStorage.setItem('menu', stringifiedArray.join(';'));
 };
 
-export const getShoppingListFromBase = () => {
-    // const shoppingList = localStorage.getItem('shopping-list');
-    // return shoppingList ? shoppingList.split(';') : defaultShoppingList;
-};
+export const fetchShoppingList = createAsyncThunk('fetchShoppingList', async () => {
+    const { data } = await supabase.from('shopping_list').select('title');
+    return data ?? [];
+});
 
 export const setShoppingListToBase = (shoppingList: string[]) => {
     // localStorage.setItem('shopping-list', shoppingList.join(';'));
