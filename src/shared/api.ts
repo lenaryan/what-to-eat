@@ -21,16 +21,15 @@ export const deleteIngredientFromBase = async (title: string) => {
     await supabase.from('ingredients').delete().eq('title', title)
 }
 
-export const getMenuFromBase = () => {
-    // const menu = localStorage.getItem('menu');
-    // if (!menu) return [];
-    // const menuArray = menu.split(';');
-    // return menuArray.map(item => JSON.parse(item));
-};
+export const fetchMenu = createAsyncThunk('fetchMenu', async () => {
+    const { data } = await supabase.from('menu').select();
+    return data ?? [];
+});
 
-export const setMenuToBase = (menu: DayMenu[]) => {
-    // const stringifiedArray = menu.map(item => JSON.stringify(item));
-    // localStorage.setItem('menu', stringifiedArray.join(';'));
+export const setMenuToBase = async (menu: DayMenu[]) => {
+    // TODO: THINK ABOUT PLACING ANOTHER MENUS
+    await supabase.from('menu').delete().gt('id', 0);
+    await supabase.from('menu').insert(menu).select();
 };
 
 export const fetchShoppingList = createAsyncThunk('fetchShoppingList', async () => {

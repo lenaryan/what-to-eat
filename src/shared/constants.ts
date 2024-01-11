@@ -9,16 +9,6 @@ export const days: daysType = {
     2: "Послезавтра",
 }
 
-export const ingredientsList = [
-    'яйца',
-    'курица',
-    'растительное масло',
-    'кетчуп',
-    'молоко',
-    'листовой салат',
-    'мороженое'
-]
-
 export const breakfastList: MealsArrayType[] = [
     {
         'dish': 'мюсли, бутерброды и кофе',
