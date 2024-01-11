@@ -2,6 +2,7 @@ import { createClient } from "@supabase/supabase-js";
 import { SUPABASE_KEY, SUPABASE_URL } from "./constants";
 import { DayMenu } from "./types";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { getStringToObjectArray } from "./functions";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
@@ -37,6 +38,8 @@ export const fetchShoppingList = createAsyncThunk('fetchShoppingList', async () 
     return data ?? [];
 });
 
-export const setShoppingListToBase = (shoppingList: string[]) => {
-    // localStorage.setItem('shopping-list', shoppingList.join(';'));
+export const setShoppingListToBase = async (shoppingList: string[]) => {
+    const newList = getStringToObjectArray(shoppingList);
+    await supabase.from('shopping_list').delete().gt('id', 0);
+    await supabase.from('shopping_list').insert(newList).select();
 };

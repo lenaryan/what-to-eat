@@ -29,7 +29,7 @@ const Ingredients = () => {
         } else {
             if (isRepeatedConst !== isRepeating) setIsRepeating(isRepeatedConst);
             e.currentTarget.add.value = "";
-            dispatch(addIngredientToList({ title: product}));
+            dispatch(addIngredientToList(product));
             setIngredientToBase(product);
         }
     }
@@ -47,8 +47,8 @@ const Ingredients = () => {
                     ingredients.map((product, index) => (
                         <li className="list__item" key={index}>
                             <div className={styles.ingredient}>
-                                <span>{product.title}</span>
-                                <button className={styles.ingredientBtn} type="button" onClick={() => handleDelete(product.title)}>&times;</button>
+                                <span>{product}</span>
+                                <button className={styles.ingredientBtn} type="button" onClick={() => handleDelete(product)}>&times;</button>
                             </div>
                         </li>
                     ))

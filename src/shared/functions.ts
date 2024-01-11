@@ -1,10 +1,8 @@
-import { fetchIngredients } from "./api";
 import { breakfastList, dinnerList, lunchList } from "./constants";
 import { ListType, MealsArrayType } from "./types";
 
-export const generateMeal = () => {
+export const generateMeal = (ingredientsInFridge: string[]) => {
     let whatToBuy: string[] = [];
-    const ingredientsInFridge = fetchIngredients();
 
     const { dish: breakfastDish, whatToBuy: buyForBreakfast } = getDishForMeal('breakfast', ingredientsInFridge);
     const { dish: lunchDish, whatToBuy: buyForLunch } = getDishForMeal('lunch', ingredientsInFridge);
@@ -68,8 +66,7 @@ const getRandomDish = (meal: string, ingredientsInFridge: string[]) => {
     const currentMealArray = getCurrentMealArray(meal);
 
     const randomDishIndex = Math.floor(Math.random() * (currentMealArray.length));
-    console.log('random dish index', randomDishIndex);
-    
+
     const randomDish = currentMealArray[randomDishIndex];
 
     randomDish.ingredients.forEach((dishIngredient: string) => {
@@ -81,7 +78,19 @@ const getRandomDish = (meal: string, ingredientsInFridge: string[]) => {
     return { dish: randomDish.dish, whatToBuy };
 }
 
-export const isRepeatingItem = (list: ListType[], newItem: string) => {
-    const foundIndex = list.findIndex(item => item.title === newItem);
+export const isRepeatingItem = (list: string[], newItem: string) => {
+    const foundIndex = list.findIndex(item => item === newItem);
     return foundIndex > -1;
+}
+
+export const getObjectToStringArray = (list: ListType[]) => {
+    const newList: string[] = [];
+    list.forEach(item => newList.push(item.title));
+    return newList;
+}
+
+export const getStringToObjectArray = (list: string[]) => {
+    const newList: ListType[] = [];
+    list.forEach(item => newList.push({ title: item }));
+    return newList;
 }

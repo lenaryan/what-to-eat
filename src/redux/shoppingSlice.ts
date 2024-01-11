@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ListType } from "../shared/types";
 import { fetchShoppingList } from "../shared/api";
+import { getObjectToStringArray } from "../shared/functions";
 
 interface shoppingState {
-    shoppingList: ListType[],
+    shoppingList: string[],
 }
 
 const initialState: shoppingState = {
@@ -16,7 +16,7 @@ export const shoppingSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(fetchShoppingList.fulfilled, (state, action) => {
-            state.shoppingList = action.payload
+            state.shoppingList = getObjectToStringArray(action.payload);
         })
     }
 });
