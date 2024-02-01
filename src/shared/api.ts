@@ -42,3 +42,18 @@ export const setShoppingListToBase = async (shoppingList: string[]) => {
     await supabase.from('shopping_list').delete().gt('id', 0);
     await supabase.from('shopping_list').insert(newList).select();
 };
+
+export const fetchBreakfastList = async () => {
+    const { data } = await supabase.from('breakfast_list').select('dish,ingredients');
+    return data ?? [];
+};
+
+export const fetchLunchList = async () => {
+    const { data } = await supabase.from('lunch_list').select('dish,ingredients');
+    return data ?? [];
+};
+
+export const fetchDinnerList = async () => {
+    const { data } = await supabase.from('dinner_list').select('dish,ingredients');
+    return data ?? [];
+};

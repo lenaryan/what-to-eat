@@ -1,4 +1,4 @@
-import { breakfastList, dinnerList, lunchList } from "./constants";
+import { fetchBreakfastList, fetchDinnerList, fetchLunchList } from "./api";
 import { ListType, MealsArrayType } from "./types";
 
 export const generateMeal = (ingredientsInFridge: string[]) => {
@@ -22,10 +22,10 @@ export const generateMeal = (ingredientsInFridge: string[]) => {
 
 const getCurrentMealArray = (meal: string): MealsArrayType[] => {
     switch (meal) {
-        case 'breakfast': return breakfastList;
-        case 'lunch': return lunchList;
-        case 'dinner': return dinnerList;
-        default: return lunchList;
+        case 'breakfast': return fetchBreakfastList();
+        case 'lunch': return fetchLunchList();
+        case 'dinner': return fetchDinnerList();
+        default: return fetchLunchList();
     }
 }
 
