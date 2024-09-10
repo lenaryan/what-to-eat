@@ -1,21 +1,22 @@
 @font-face {
-  font-family: "Days One";
+  font-family: Montserrat;
   src:
-    url("./assets/fonts/DaysOne-Regular.ttf") format("TrueType");
+    url("./assets/fonts/Montserrat.ttf") format("TrueType");
 }
 
 /* TODO: style scrollbars? */
 
 :root {
-  --light-color: #FBFBFB;
-  --light-bg: #D8E4FF;
-  --accent-color: #E6AACE;
-  --darkest: #1A237E;
-  --dark-bg: #0288D1;
-  --error-color: #D8E4FF;
-  --big-gap: 40px;
+  --blocks-color: #E1F1FF;
+  --accent-color: #247DCE;
+  --font-color: #0D2133;
+  --main-color: white;
+  --menu-color: rgba(36, 125, 206, 0.3);
+  /* --dark-bg: #0288D1;
+  --error-color: #D8E4FF; */
+  /* --big-gap: 40px;
   --middle-gap: 20px;
-  --small-gap: 10px;
+  --small-gap: 10px; */
   --max-width: 600px;
 }
 
@@ -25,11 +26,10 @@ html, body, #root {
 
 body {
   margin: 0;
-  font-family: "Days One", Arial, sans-serif;
+  font-family: Montserrat, Arial, sans-serif;
   line-height: 1.5;
-  color: var(--light-font);
-  background-image: linear-gradient(var(--darkest) 50%, var(--dark-bg));
-  background-attachment: fixed;
+  color: var(--font-color);
+  background-color: var(--main-color);
 }
 
 .container {
@@ -46,21 +46,20 @@ body {
   display: block;
   font-family: inherit;
   border: none;
-  border-radius: 10px;
   padding: 17px 0;
   width: 100%;
   font-size: 20px;
   text-align: center;
   line-height: 1.2;
-  background-color: var(--light-bg);
-  color: var(--darkest);
-  transition: background-color 0.2s ease-in-out;
+  background-color: var(--accent-color);
+  color: var(--main-color);
+  transition: opacity 0.2s ease-in-out;
 }
 
 .button:hover,
 .button:focus {
   outline: none;
-  background-color: var(--accent-color);
+  opacity: 0.7;
 }
 
 a {
@@ -71,14 +70,14 @@ h1, h2 {
   font-size: 32px;
   margin-bottom: var(--middle-gap);
   margin-top: 0;
-  color: var(--accent-color);
+  font-weight: normal;
 }
 
 h3 {
   margin-top: 0;
   margin-bottom: var(--small-gap);
-  color: var(--light-color);
   font-size: 20px;
+  font-weight: normal;
 }
 
 input {

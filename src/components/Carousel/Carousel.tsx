@@ -3,11 +3,11 @@ import { CarouselProps } from "../../shared/types";
 import styles from './Carousel.module.css';
 
 // TODO: loader?
-const Carousel = ({ menu }: CarouselProps) => {
+export const Carousel = ({ menu }: CarouselProps) => {
     return (
         <>
             { 
-                !!menu.length && <ul className={styles.carousel}>
+                !!menu?.length && <ul className={styles.carousel}>
                 {
                     menu.map((day, index) => (
                         <li className={styles.slideItem} key={`${day}${index}`}>
@@ -36,5 +36,3 @@ const Carousel = ({ menu }: CarouselProps) => {
         </>
     )
 }
-
-export default Carousel;

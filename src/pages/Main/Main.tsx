@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import styles from './Main.module.css';
 import cn from 'classnames'
-import Carousel from '../../components/Carousel';
+import { Carousel } from '../../components/Carousel';
 import { useEffect, useState } from 'react';
 import { DayMenu } from '../../shared/types';
 import { getMenuFromBase, getShoppingListFromBase, setMenuToBase, setShoppingListToBase } from '../../shared/api';
 import { generateMeal } from '../../shared/functions';
+import { Button } from '../../components/Button';
 
 const Main = () => {
     const [menu, setMenu] = useState<DayMenu[]>([]);
@@ -31,8 +32,8 @@ const Main = () => {
     return (
         <section className="container">
             <h2>Меню</h2>
-            {/* <Carousel menu={menu} /> */}
-            <button type="button" className={cn(`button ${styles.eatBtn}`)} onClick={handleCreateMenu}>Что будем есть?</button>
+            <Carousel menu={menu} />
+            <Button className={cn(`button ${styles.eatBtn}`)} onClick={handleCreateMenu}>Что будем есть?</Button>
             <h2>Список покупок</h2>
             <ul className={cn(`list ${styles.scrollByingList}`)}>
                 {
