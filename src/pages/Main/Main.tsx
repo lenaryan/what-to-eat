@@ -1,19 +1,15 @@
-import { Link } from 'react-router-dom';
 import styles from './Main.module.css';
-import cn from 'classnames'
-import { Carousel } from '../../components/Carousel';
 import { useEffect, useState } from 'react';
 import { DayMenu } from '../../shared/types';
-import { getMenuFromBase, getShoppingListFromBase, setMenuToBase, setShoppingListToBase } from '../../shared/api';
+import { getMenuFromBase, setMenuToBase } from '../../shared/api';
 import { generateMeal } from '../../shared/functions';
 import { Button } from '../../components/Button';
+import klosh from '../../assets/images/klosh.png';
 
 const Main = () => {
     const [menu, setMenu] = useState<DayMenu[]>([]);
-    const [shoppingList, setShoppingList] = useState<string[]>([]);
 
     useEffect(() => {
-        setShoppingList(getShoppingListFromBase);
         setMenu(getMenuFromBase);
     }, []);
 
@@ -24,25 +20,19 @@ const Main = () => {
         setMenu([menu]);
         setMenuToBase([menu])
 
-        const newShoppingList = Array.from(new Set([...shoppingList, ...whatToBuy]))
-        setShoppingList([...newShoppingList]);
-        setShoppingListToBase([...newShoppingList]);
+        // const newShoppingList = Array.from(new Set([...shoppingList, ...whatToBuy]))
+        // setShoppingList([...newShoppingList]);
+        // setShoppingListToBase([...newShoppingList]);
     }
 
     return (
         <section className="container">
-            <h2>Меню</h2>
-            <Carousel menu={menu} />
-            <Button className={cn(`button ${styles.eatBtn}`)} onClick={handleCreateMenu}>Что будем есть?</Button>
-            <h2>Список покупок</h2>
-            <ul className={cn(`list ${styles.scrollByingList}`)}>
-                {
-                    shoppingList?.map((product, index) => (
-                        <li className="list__item" key={product + index}>{product}</li>
-                    ))
-                }
-            </ul>
-            <Link to='/ingredients' className="button">Что в холодильнике?</Link>
+            <h1>Меню</h1>
+            <div className={styles.intro}>
+                <img src={klosh} alt='' width="62px" height="42px" />
+                <p className={styles.introText}>Составьте варианты меню на&nbsp;день из&nbsp;имеющихся продуктов</p>
+            </div>
+            <Button onClick={handleCreateMenu}>Составить меню</Button>
         </section>
     )
 }

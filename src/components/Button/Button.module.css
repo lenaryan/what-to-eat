@@ -1,15 +1,32 @@
 .small {
-
+  font-size: 14px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 4px;
 }
 
 .medium {
-
+  font-size: 20px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  border-radius: 8px;
 }
 
 .filled {
+  background-color: var(--accent-color);
+  color: var(--main-color);
+}
 
+.filled:hover {
+  opacity: 0.7;
 }
 
 .outline {
-  
+  background-color: transparent;
+  color: var(--accent-color);
+}
+
+.outline:hover {
+  background-color: var(--accent-color);
+  color: var(--main-color);
 }

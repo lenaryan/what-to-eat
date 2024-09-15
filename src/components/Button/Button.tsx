@@ -3,8 +3,8 @@ import styles from './Button.module.css';
 import cn from 'classnames';
 
 type TButtonProps = {
-  size?: 's' | 'm', // TODO: classes with font-size, padding, border-radius
-  variant?: 'filled' | 'outline', // TODO: classes with background, border, font-color
+  size?: 's' | 'm',
+  variant?: 'filled' | 'outline',
   children: string,
   onClick?: React.MouseEventHandler<HTMLButtonElement>
   className?: string;

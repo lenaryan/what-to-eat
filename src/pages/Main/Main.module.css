@@ -1,9 +1,14 @@
-.eatBtn {
-    margin-bottom: var(--big-gap);
+.intro {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 32px;
+    border: 1px solid var(--accent-color-50);
+    border-radius: 12px;
+    margin-bottom: 20px;
 }
 
-.scrollByingList {
-    overflow-y: scroll;
-    flex: 1;
-    margin-bottom: var(--big-gap) !important;
+.introText {
+    color: var(--font-color-50);
+    font-size: 16px;
 }

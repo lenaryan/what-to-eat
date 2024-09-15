@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import cn from 'classnames';
 import styles from './Ingredients.module.css';
-import { deleteIngredientFromBase, fetchIngredients, setIngredientToBase } from "../../shared/api";
+import { fetchIngredients, setIngredientToBase } from "../../shared/api";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store";
 import { addIngredientToList, removeIngredientFromList } from "../../redux/ingredientsSlice";
@@ -36,15 +35,16 @@ const Ingredients = () => {
 
     const handleDelete = (product: string) => {
         dispatch(removeIngredientFromList(product));
-        deleteIngredientFromBase(product);
+        // TODO: maybe don't delete immediately
+        // deleteIngredientFromBase(product);
     }
 
     return (
         <section className="container">
-            <h1>Что в холодильнике?</h1>
+            <h1>Холодильник</h1>
             <ul className={cn(`list ${styles.listStyle}`)}>
                 {
-                    ingredients.map(product => (
+                    ingredients?.map(product => (
                         <li className="list__item" key={product.id}>
                             <div className={styles.ingredient}>
                                 <span>{product.title}</span>
@@ -60,7 +60,6 @@ const Ingredients = () => {
                 <button className={styles.formBtn} type="submit" aria-label="Добавить">&#10003;</button>
                 {isRepeating && <p className={styles.isRepeating}>продукт уже есть в списке</p>}
             </form>
-            <Link to='/' className="button">Выйти</Link>
         </section>
     )
 }

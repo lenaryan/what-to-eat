@@ -5,8 +5,11 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
+// TODO: create policies in database???
+
 export const fetchIngredients = createAsyncThunk('fetchIngredients', async () => {
-    const { data: ingredients } = await supabase.from('ingredients').select();
+    const { data: ingredients } = await supabase.from('ingredients').select('*');
+    
     return ingredients ?? [];
 });
 
@@ -32,10 +35,11 @@ export const setMenuToBase = (menu: DayMenu[]) => {
     // localStorage.setItem('menu', stringifiedArray.join(';'));
 };
 
-export const getShoppingListFromBase = () => {
-    // const shoppingList = localStorage.getItem('shopping-list');
-    // return shoppingList ? shoppingList.split(';') : defaultShoppingList;
-};
+export const fetchShoppingList = createAsyncThunk('fetchShoppingList', async () => {
+    const { data: shoppingList } = await supabase.from('shopping_list').select('*');
+    
+    return shoppingList ?? [];
+});
 
 export const setShoppingListToBase = (shoppingList: string[]) => {
     // localStorage.setItem('shopping-list', shoppingList.join(';'));

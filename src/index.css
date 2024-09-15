@@ -9,14 +9,12 @@
 :root {
   --blocks-color: #E1F1FF;
   --accent-color: #247DCE;
+  --accent-color-30: rgba(36, 125, 206, 0.3);
+  --accent-color-50: rgba(36, 125, 206, 0.5);
   --font-color: #0D2133;
+  --font-color-50: rgba(13, 33, 51, 0.5);
   --main-color: white;
   --menu-color: rgba(36, 125, 206, 0.3);
-  /* --dark-bg: #0288D1;
-  --error-color: #D8E4FF; */
-  /* --big-gap: 40px;
-  --middle-gap: 20px;
-  --small-gap: 10px; */
   --max-width: 600px;
 }
 
@@ -27,7 +25,7 @@ html, body, #root {
 body {
   margin: 0;
   font-family: Montserrat, Arial, sans-serif;
-  line-height: 1.5;
+  line-height: 1.2;
   color: var(--font-color);
   background-color: var(--main-color);
 }
@@ -35,47 +33,44 @@ body {
 .container {
   height: 100%;
   margin: 0 auto;
-  padding: var(--big-gap) 0;
+  width: 95%;
   max-width: var(--max-width);
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
 }
 
-.button {
+button {
   display: block;
   font-family: inherit;
-  border: none;
-  padding: 17px 0;
+  border: 1px solid var(--accent-color);
   width: 100%;
-  font-size: 20px;
-  text-align: center;
-  line-height: 1.2;
-  background-color: var(--accent-color);
-  color: var(--main-color);
-  transition: opacity 0.2s ease-in-out;
+  line-height: 1;
+  transition: all 0.2s ease-in-out;
 }
 
-.button:hover,
-.button:focus {
+button:hover,
+button:focus {
   outline: none;
-  opacity: 0.7;
 }
 
 a {
   text-decoration: none;
 }
 
-h1, h2 {
-  font-size: 32px;
-  margin-bottom: var(--middle-gap);
+a:visited {
+  color: inherit;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 24px;
   margin-top: 0;
   font-weight: normal;
 }
 
 h3 {
   margin-top: 0;
-  margin-bottom: var(--small-gap);
   font-size: 20px;
   font-weight: normal;
 }
@@ -83,50 +78,4 @@ h3 {
 input {
   font-family: inherit;
   font-size: inherit;
-  transition: border-color 0.2s ease-in-out;
-}
-
-input:focus {
-  outline: none;
-  border-bottom-color: var(--accent-color);
-}
-
-.list {
-  margin: 0;
-  padding: 0;
-  padding-left: var(--middle-gap);
-  font-size: 20px;
-  line-height: 1;
-  color: var(--light-color);
-}
-
-.list__item:not(:last-of-type) {
-  margin-bottom: var(--middle-gap);
-}
-
-@media (max-width: 640px) {
-  .container {
-    margin-left: var(--middle-gap);
-    margin-right: var(--middle-gap);
-  }
-}
-
-@media (max-width: 400px) {
-  :root {
-    --big-gap: 36px;
-    --middle-gap: 18px;
-    --small-gap: 9px;
-  }
-
-  h1, h2 {
-    font-size: 28px;
-  }
-
-  .list {
-    font-size: 18px;
-  }
-
-  .button {
-    font-size: 18px;
-  }
 }

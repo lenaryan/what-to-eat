@@ -1,7 +1,14 @@
 import { MealsArrayType, daysType } from "./types"
 
+// TODO: move it to .env
 export const SUPABASE_URL = 'https://teyomhgcavivsiwdllpt.supabase.co';
 export const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRleW9taGdjYXZpdnNpd2RsbHB0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDM4MjM4NjAsImV4cCI6MjAxOTM5OTg2MH0.GUovxTYlelBCgNb4VNyOeRXBJPWBdNP35IC7opHMB0w';
+
+export const ROUTES = {
+    menu: '/',
+    ingredients: '/ingredients',
+    shoppingList: '/shopping-list'
+}
 
 export const days: daysType = {
     0: "Сегодня",
