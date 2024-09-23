@@ -2,9 +2,11 @@ import { fetchIngredients } from "./api";
 import { breakfastList, dinnerList, lunchList } from "./constants";
 import { IngredientsType, MealsArrayType } from "./types";
 
+// TODO: add 'level of hard' field for lazy days?
+
 export const generateMeal = () => {
     let whatToBuy: string[] = [];
-    const ingredientsInFridge = fetchIngredients();
+    const ingredientsInFridge = fetchIngredients(); // TODO: get ingredients from state
 
     const { dish: breakfastDish, whatToBuy: buyForBreakfast } = getDishForMeal('breakfast', ingredientsInFridge);
     const { dish: lunchDish, whatToBuy: buyForLunch } = getDishForMeal('lunch', ingredientsInFridge);
@@ -84,4 +86,8 @@ const getRandomDish = (meal: string, ingredientsInFridge: string[]) => {
 export const isRepeatingItem = (list: IngredientsType[], newItem: string) => {
     const foundIndex = list.findIndex(item => item.title === newItem);
     return foundIndex > -1;
+}
+
+export const capitalizeFirstLetter = (text: string) => {
+    return text.charAt(0).toUpperCase() + text.toLowerCase().slice(1);
 }

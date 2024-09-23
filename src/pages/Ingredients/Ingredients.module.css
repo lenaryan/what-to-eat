@@ -1,22 +1,10 @@
 .listStyle {
-    margin-bottom: var(--middle-gap) !important;
     flex: 1;
-    margin-bottom: var(--middle-gap);
-}
-
-.ingredient {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.ingredientBtn {
-    border: none;
-    background: none;
-    color: var(--error-color);
-    font-size: 32px;
-    line-height: var(--middle-gap);
     padding: 0;
+    margin: 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .form {

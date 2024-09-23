@@ -1,65 +1,39 @@
-import { useEffect, useState } from "react";
-import cn from 'classnames';
+import { useEffect } from "react";
 import styles from './Ingredients.module.css';
-import { fetchIngredients, setIngredientToBase } from "../../shared/api";
+import { fetchIngredients } from "../../shared/api";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store";
-import { addIngredientToList, removeIngredientFromList } from "../../redux/ingredientsSlice";
-import { isRepeatingItem } from "../../shared/functions";
+import { removeIngredientFromList } from "../../redux/ingredientsSlice";
+import { ListItem } from "../../components/ListItem";
+import { AddingForm } from "../../components/AddingForm";
 
 const Ingredients = () => {
     const { ingredients } = useSelector((state: RootState) => state.ingredientsSlice);
     const dispatch = useDispatch<AppDispatch>()
-    const [isRepeating, setIsRepeating] = useState(false);
 
     useEffect(() => {
         dispatch(fetchIngredients());
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const product = (e.currentTarget.add.value).toLowerCase();
-        if (!product) return;
-
-        const isRepeatedConst = isRepeatingItem(ingredients, product);
-        if (isRepeatedConst) {
-            setIsRepeating(isRepeatedConst);
-        } else {
-            if (isRepeatedConst !== isRepeating) setIsRepeating(isRepeatedConst);
-            e.currentTarget.add.value = "";
-            dispatch(addIngredientToList({ id: ingredients.length, title: product}));
-            setIngredientToBase(product);
-        }
-    }
-
+    // TODO: move to shared?
     const handleDelete = (product: string) => {
         dispatch(removeIngredientFromList(product));
-        // TODO: maybe don't delete immediately
+        // TODO: do an alert asking for delete
         // deleteIngredientFromBase(product);
     }
 
     return (
         <section className="container">
             <h1>Холодильник</h1>
-            <ul className={cn(`list ${styles.listStyle}`)}>
+            <ul className={styles.listStyle}>
                 {
                     ingredients?.map(product => (
-                        <li className="list__item" key={product.id}>
-                            <div className={styles.ingredient}>
-                                <span>{product.title}</span>
-                                <button className={styles.ingredientBtn} type="button" onClick={() => handleDelete(product.title)}>&times;</button>
-                            </div>
-                        </li>
+                        <ListItem key={product.id} product={product} onClick={() => handleDelete(product.title)} />
                     ))
                 }
             </ul>
-            <form className={styles.form} onSubmit={handleSubmit}>
-                {/* TODO: datalist with chosing from list of constants? */}
-                <input name="add" type="text" className={styles.formInput} aria-label="что ещё?" placeholder="что ещё?" />
-                <button className={styles.formBtn} type="submit" aria-label="Добавить">&#10003;</button>
-                {isRepeating && <p className={styles.isRepeating}>продукт уже есть в списке</p>}
-            </form>
+            <AddingForm />
         </section>
     )
 }
