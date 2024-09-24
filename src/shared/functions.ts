@@ -70,7 +70,6 @@ const getRandomDish = (meal: string, ingredientsInFridge: string[]) => {
     const currentMealArray = getCurrentMealArray(meal);
 
     const randomDishIndex = Math.floor(Math.random() * (currentMealArray.length));
-    console.log('random dish index', randomDishIndex);
     
     const randomDish = currentMealArray[randomDishIndex];
 
@@ -84,7 +83,7 @@ const getRandomDish = (meal: string, ingredientsInFridge: string[]) => {
 }
 
 export const isRepeatingItem = (list: IngredientsType[], newItem: string) => {
-    const foundIndex = list.findIndex(item => item.title === newItem);
+    const foundIndex = list.findIndex(item => item.title.toLowerCase() === newItem.toLowerCase());
     return foundIndex > -1;
 }
 

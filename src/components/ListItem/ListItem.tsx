@@ -13,7 +13,6 @@ export const ListItem: FC<TListItemProps> = ({ product, onClick }) => {
   return (
     <li className={styles.listItem}>
       <span>{capitalizeFirstLetter(product.title)}</span>
-      {/* TODO: bin icon */}
       <button className={styles.listItemBtn} type="button" onClick={onClick}>
         <TrashCan />
       </button>

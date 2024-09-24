@@ -15,7 +15,9 @@
   --font-color-50: rgba(13, 33, 51, 0.5);
   --main-color: white;
   --menu-color: rgba(36, 125, 206, 0.3);
+  --error-color: #EB8F90;
   --max-width: 600px;
+  --field-gap: 20px;
 }
 
 html, body, #root {
@@ -32,8 +34,8 @@ body {
 
 .container {
   height: 100%;
-  margin: 0 auto;
-  width: 95%;
+  margin: 0 var(--field-gap);
+  width: calc(100% - var(--field-gap) * 2);
   max-width: var(--max-width);
   display: flex;
   flex-direction: column;

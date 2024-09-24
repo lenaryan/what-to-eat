@@ -13,7 +13,7 @@ export const fetchIngredients = createAsyncThunk('fetchIngredients', async () =>
     return ingredients ?? [];
 });
 
-export const setIngredientToBase = async (title: string) => {
+export const addIngredientToBase = async (title: string) => {
     await supabase.from('ingredients').insert([
         { title },
     ]).select()

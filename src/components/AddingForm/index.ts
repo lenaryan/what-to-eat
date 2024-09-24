@@ -1,0 +1,1 @@
+export { AddingForm } from './AddingForm';

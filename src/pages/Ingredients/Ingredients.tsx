@@ -16,10 +16,8 @@ const Ingredients = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    // TODO: move to shared?
     const handleDelete = (product: string) => {
         dispatch(removeIngredientFromList(product));
-        // TODO: do an alert asking for delete
         // deleteIngredientFromBase(product);
     }
 

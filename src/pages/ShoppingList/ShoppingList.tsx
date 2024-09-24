@@ -4,6 +4,7 @@ import { AppDispatch, RootState } from '../../redux/store';
 import { fetchShoppingList } from "../../shared/api";
 import { ListItem } from "../../components/ListItem";
 import { removeIngredientFromList } from "../../redux/ingredientsSlice";
+import { AddingForm } from "../../components/AddingForm";
 
 export const ShoppingList = () => {
   const { shoppingList } = useSelector((state: RootState) => state.shoppingListSlice);
@@ -13,10 +14,8 @@ export const ShoppingList = () => {
       dispatch(fetchShoppingList());
   }, []);
 
-  // TODO: move to shared?
   const handleDelete = (product: string) => {
     dispatch(removeIngredientFromList(product));
-    // TODO: do an alert asking for delete
     // deleteIngredientFromBase(product);
   }
 
@@ -30,6 +29,7 @@ export const ShoppingList = () => {
           ))
         }
       </ul>
+      <AddingForm />
     </section>
   )
 }
