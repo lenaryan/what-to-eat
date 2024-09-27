@@ -41,6 +41,8 @@ export const fetchShoppingList = createAsyncThunk('fetchShoppingList', async () 
     return shoppingList ?? [];
 });
 
-export const setShoppingListToBase = (shoppingList: string[]) => {
-    // localStorage.setItem('shopping-list', shoppingList.join(';'));
+export const addShoppingItemToBase = async (title: string) => {
+    await supabase.from('shopping_list').insert([
+        { title },
+    ]).select()
 };

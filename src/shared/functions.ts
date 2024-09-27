@@ -1,12 +1,12 @@
-import { fetchIngredients } from "./api";
 import { breakfastList, dinnerList, lunchList } from "./constants";
 import { IngredientsType, MealsArrayType } from "./types";
 
 // TODO: add 'level of hard' field for lazy days?
 
-export const generateMeal = () => {
+export const generateMeal = (ingredients: IngredientsType[]) => {
     let whatToBuy: string[] = [];
-    const ingredientsInFridge = fetchIngredients(); // TODO: get ingredients from state
+    
+    const ingredientsInFridge = getIngredientsNames(ingredients);
 
     const { dish: breakfastDish, whatToBuy: buyForBreakfast } = getDishForMeal('breakfast', ingredientsInFridge);
     const { dish: lunchDish, whatToBuy: buyForLunch } = getDishForMeal('lunch', ingredientsInFridge);
@@ -22,6 +22,10 @@ export const generateMeal = () => {
         },
         whatToBuy
     }
+}
+
+const getIngredientsNames = (ingredients: IngredientsType[]) => {
+    return ingredients?.map(item => item.title);
 }
 
 const getCurrentMealArray = (meal: string): MealsArrayType[] => {
