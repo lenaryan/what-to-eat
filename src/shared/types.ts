@@ -19,3 +19,10 @@ export type IngredientsType = {
     id: number,
     title: string
 }
+
+export type TMealName = {
+    [meal: string]: {
+        title: string,
+        icon: () => JSX.Element
+    }
+}

@@ -24,7 +24,7 @@
 .arrowClose {
   position: absolute;
   right: 0;
-  top: 55%;
+  top: 60%;
   transform: translateY(-50%) rotate(180deg);
 }
 
