@@ -5,6 +5,7 @@ import { fetchShoppingList } from "../../shared/api";
 import { ListItem } from "../../components/ListItem";
 import { removeIngredientFromList } from "../../redux/ingredientsSlice";
 import { AddingForm } from "../../components/AddingForm";
+import styles from './ShoppingList.module.css';
 
 export const ShoppingList = () => {
   const { shoppingList } = useSelector((state: RootState) => state.shoppingListSlice);
@@ -22,7 +23,7 @@ export const ShoppingList = () => {
   return (
     <section className="container">
       <h1>Список покупок</h1>
-      <ul>
+      <ul className={styles.listStyle}>
         {
           shoppingList?.map(product => (
             <ListItem key={product.id} product={product} onClick={() => handleDelete(product.title)} />

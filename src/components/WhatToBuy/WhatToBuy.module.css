@@ -1,0 +1,46 @@
+.details {
+  background-color: var(--main-color);
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.legend {
+  text-indent: -19px;
+  position: relative;
+  font-size: 14px;
+}
+
+.legend::marker {
+  color: transparent;
+}
+
+.arrowOpen {
+  position: absolute;
+  right: 0;
+  top: 40%;
+  transform: translateY(-50%);
+}
+
+.arrowClose {
+  position: absolute;
+  right: 0;
+  top: 55%;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.list {
+  padding: 0;
+  margin-top: 16px;
+  margin-bottom: 0;
+  list-style: none;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.item {
+  border-radius: 4px;
+  background-color: var(--blocks-color);
+  font-size: 14px;
+  padding: 8px;
+}
